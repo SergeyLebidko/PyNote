@@ -1,14 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href={% static 'main/style.css' %}/>
     <title>PyBlog</title>
 </head>
 <body>
 {% for topic in topics %}
-    <p>{{ topic.published }}</p>
-    <p>{{ topic.title }}</p>
-    <p>{{ topic.content }}</p>
+    <div id="tp">
+        <p><h3>{{ topic.title }}</h3>
+        {{ topic.published }}
+        </p>
+        <p>{{ topic.content }}</p>
+    </div>
     <br>
 {% endfor %}
 </body>

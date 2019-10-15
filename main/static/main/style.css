@@ -1,0 +1,10 @@
+div#tp{
+    background-color: RGB(180, 200, 255);
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid RGB(140,160,200);
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32em
+}
