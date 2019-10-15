@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PyBlog</title>
+</head>
+<body>
+{% for topic in topics %}
+    <p>{{ topic.published }}</p>
+    <p>{{ topic.title }}</p>
+    <p>{{ topic.content }}</p>
+    <br>
+{% endfor %}
+</body>
+</html>
