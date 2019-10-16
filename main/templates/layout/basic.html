@@ -12,6 +12,13 @@
     <p><b>PyBlog - Главная страница</b></p>
 </div>
 <br>
+<div class="topic_block">
+    <form method="post">
+        {% csrf_token %}
+        <table>{{ form.as_table }}</table>
+    </form>
+</div>
+<br>
 {% block content %}
 {% endblock %}
 </body>
