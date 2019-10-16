@@ -4,10 +4,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href={% static 'main/style.css' %}/>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}"/>
     <title>PyBlog</title>
 </head>
 <body>
+<div class="topic_block">
+    <p><b>PyBlog - Главная страница</b></p>
+</div>
+<br>
 {% block content %}
 {% endblock %}
 </body>

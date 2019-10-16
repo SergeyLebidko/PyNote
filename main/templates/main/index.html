@@ -2,9 +2,9 @@
 
 {% block content %}
     {% for topic in topics %}
-        <div id="tp">
+        <div class='topic_block'>
             <p>
-            <h3>{{ topic.title }}</h3>
+            <b>{{ topic.title }}</b><br>
             {{ topic.published }}
             </p>
             <p>{{ topic.content }}</p>

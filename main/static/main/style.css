@@ -1,8 +1,8 @@
-div#tp{
-    background-color: RGB(180, 200, 255);
+div.topic_block{
+    background-color: RGB(220, 220, 220);
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    border: 2px solid RGB(140,160,200);
+    border: 2px solid RGB(180,180,180);
     padding: 10px;
     margin-left: auto;
     margin-right: auto;
