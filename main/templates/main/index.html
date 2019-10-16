@@ -1,21 +1,14 @@
-{% load static %}
+{% extends 'layout/basic.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href={% static 'main/style.css' %}/>
-    <title>PyBlog</title>
-</head>
-<body>
-{% for topic in topics %}
-    <div id="tp">
-        <p><h3>{{ topic.title }}</h3>
-        {{ topic.published }}
-        </p>
-        <p>{{ topic.content }}</p>
-    </div>
-    <br>
-{% endfor %}
-</body>
-</html>
+{% block content %}
+    {% for topic in topics %}
+        <div id="tp">
+            <p>
+            <h3>{{ topic.title }}</h3>
+            {{ topic.published }}
+            </p>
+            <p>{{ topic.content }}</p>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}
