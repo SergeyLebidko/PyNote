@@ -5,7 +5,13 @@ from .forms import TopicForm
 
 def index(request):
     topics = Topic.objects.order_by('-published')
+    context = {'topics': topics}
+
+    if request.method == 'POST':
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
+
     form = TopicForm()
-    context = {'topics': topics, 'form': form}
-    if request.method == 'GET':
-        return render(request, 'main/index.html', context)
+    context['form'] = form
+    return render(request, 'main/index.html', context)
