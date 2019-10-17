@@ -10,8 +10,12 @@ def index(request):
     if request.method == 'POST':
         form = TopicForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_topic = form.save(commit=False)
+            new_topic.creator = request.user
+            new_topic.save()
 
-    form = TopicForm()
-    context['form'] = form
+    if request.user.is_authenticated:
+        form = TopicForm()
+        context['form'] = form
+
     return render(request, 'main/index.html', context)
