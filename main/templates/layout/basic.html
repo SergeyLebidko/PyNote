@@ -14,16 +14,16 @@
     <p>
         <b>PyBlog - </b>
         {% if user.is_authenticated %}
-            {{ user }} - выйти
+            {{ user }} - <a href={% url 'logout' %}>выйти</a>
         {% else %}
-            <a href={% url 'login' %}>войти</a>
+            <a href={% url 'login' %}>войти</a> или <a href={% url 'register' %}>зарегистрироваться</a>
         {% endif %}
     </p>
 </div>
 <br>
 
 
-{# Блок выводит форму для публикации поста #}
+{# Блок выводит форму для публикации поста (при условии, что есть залогинившийся пользователь) #}
 {% if user.is_authenticated %}
     <div class="block">
         <form method="post">
