@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView
 from .models import Topic
 from .forms import TopicForm
 
@@ -19,3 +20,7 @@ def index(request):
         context['form'] = form
 
     return render(request, 'main/index.html', context)
+
+
+class LoginController(LoginView):
+    template_name = 'main/login.html'

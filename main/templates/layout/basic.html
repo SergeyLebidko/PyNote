@@ -9,20 +9,23 @@
 </head>
 <body>
 
-<div class="topic_block">
+{# Блок выводит заголовок страницы #}
+<div class="block">
     <p>
         <b>PyBlog - </b>
         {% if user.is_authenticated %}
-            Вход
+            {{ user }} - выйти
         {% else %}
-            Выход
+            <a href={% url 'login' %}>войти</a>
         {% endif %}
     </p>
 </div>
 <br>
 
+
+{# Блок выводит форму для публикации поста #}
 {% if user.is_authenticated %}
-    <div class="topic_block">
+    <div class="block">
         <form method="post">
             {% csrf_token %}
             <table>{{ form.as_table }}
@@ -38,5 +41,6 @@
 
 {% block content %}
 {% endblock %}
+
 </body>
 </html>
