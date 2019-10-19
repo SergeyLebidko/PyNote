@@ -9,7 +9,7 @@ from .forms import TopicForm
 
 
 # Контроллер, выводящий главную страницу
-def index(request):
+def topics_list_controller(request):
     topics = Topic.objects.order_by('-published')
     context = {'topics': topics}
 
@@ -28,7 +28,7 @@ def index(request):
 
 
 # Контроллер, регистрирующий нового пользователя
-def register(request):
+def user_register_controller(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
