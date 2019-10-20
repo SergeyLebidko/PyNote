@@ -24,7 +24,7 @@ def topics_list_controller(request):
         form = TopicForm()
         context['form'] = form
 
-    return render(request, 'main/index.html', context)
+    return render(request, 'main/topics_list.html', context)
 
 
 # Контроллер, регистрирующий нового пользователя
