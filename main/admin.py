@@ -3,8 +3,8 @@ from .models import Topic
 
 
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ['title', 'content', 'creator', 'published']
-    list_display_links = ['title', 'content']
+    list_display = ['content', 'creator', 'published']
+    list_display_links = ['content']
     ordering = ['published']
 
 

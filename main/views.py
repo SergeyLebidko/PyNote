@@ -8,7 +8,7 @@ from .models import Topic
 from .forms import TopicForm
 
 
-# Контроллер, выводящий главную страницу
+# Контроллер, выводящий список тем
 def topics_list_controller(request):
     topics = Topic.objects.order_by('-published')
     context = {'topics': topics}
