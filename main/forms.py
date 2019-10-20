@@ -1,5 +1,13 @@
 from django import forms
-from .models import Entry
+from .models import Topic, Entry
+
+
+class TopicForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = ['title']
+        labels = {'title': 'Тема'}
+        widgets = {'title': forms.CharField(attrs={'cols': 60})}
 
 
 class EntryForm(forms.ModelForm):

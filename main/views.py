@@ -4,15 +4,22 @@ from django.urls import reverse
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-from .models import Entry
+from .models import Entry, Topic
 from .forms import EntryForm
 
 
 # Контроллер, выводящий список сообщений
 def entry_list_controller(request):
-    entries = Entry.objects.order_by('-published')
+    # Получаем тему, сообщения которой надо вывести
+    try:
+        selected_topic = Topic.objects.get(pk=request.GET['topic_id'])
+        entries = Entry.objects.filter(topic=selected_topic).order_by('-published')
+    except:
+        # Если тему получить не удалось, то список сообщений делаем пустым
+        entries = []
     context = {'entries': entries}
 
+    # Если пришли данные от формы ввода нового сообщения, то проверяем и сохраняем его
     if request.method == 'POST':
         form = EntryForm(request.POST)
         if form.is_valid():
@@ -20,11 +27,20 @@ def entry_list_controller(request):
             new_topic.creator = request.user
             new_topic.save()
 
+    # Если список сообщений запрошен залогинившимся пользователем, то выводим форму для ввода нового сообщения
     if request.user.is_authenticated:
         form = EntryForm()
         context['form'] = form
 
     return render(request, 'main/entry_list.html', context)
+
+
+# Контроллер, выводящий список тем
+def topic_list_controller(request):
+    topics = Topic.objects.order_by('-published')
+    context = {'topics': topics}
+
+    return render(request, 'main/topic_list.html', context)
 
 
 # Контроллер, регистрирующий нового пользователя
