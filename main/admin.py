@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Topic
+from .models import Entry
 
 
-class TopicAdmin(admin.ModelAdmin):
+class EntryAdmin(admin.ModelAdmin):
     list_display = ['content', 'creator', 'published']
     list_display_links = ['content']
     ordering = ['published']
 
 
-admin.site.register(Topic, TopicAdmin)
+admin.site.register(Entry, EntryAdmin)

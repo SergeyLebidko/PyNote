@@ -4,27 +4,27 @@ from django.urls import reverse
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
-from .models import Topic
-from .forms import TopicForm
+from .models import Entry
+from .forms import EntryForm
 
 
-# Контроллер, выводящий список тем
-def topics_list_controller(request):
-    topics = Topic.objects.order_by('-published')
-    context = {'topics': topics}
+# Контроллер, выводящий список сообщений
+def entry_list_controller(request):
+    entries = Entry.objects.order_by('-published')
+    context = {'entries': entries}
 
     if request.method == 'POST':
-        form = TopicForm(request.POST)
+        form = EntryForm(request.POST)
         if form.is_valid():
             new_topic = form.save(commit=False)
             new_topic.creator = request.user
             new_topic.save()
 
     if request.user.is_authenticated:
-        form = TopicForm()
+        form = EntryForm()
         context['form'] = form
 
-    return render(request, 'main/topics_list.html', context)
+    return render(request, 'main/entry_list.html', context)
 
 
 # Контроллер, регистрирующий нового пользователя

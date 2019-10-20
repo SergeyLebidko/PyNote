@@ -1,10 +1,10 @@
 from django import forms
-from .models import Topic
+from .models import Entry
 
 
-class TopicForm(forms.ModelForm):
+class EntryForm(forms.ModelForm):
     class Meta:
-        model = Topic
+        model = Entry
         fields = ['content']
         labels = {'content': 'Текст'}
         widgets = {'content': forms.Textarea(attrs={'rows': 3, 'cols': 60})}

@@ -35,12 +35,12 @@
 
 {# Блок выводит перечень сообщений #}
 {% block content %}
-    {% for topic in topics %}
+    {% for entry in entries %}
         <div class='block'>
             <p>
-                {{ topic.creator }} - {{ topic.published }}
+                {{ entry.creator }} - {{ entry.published }}
             </p>
-            <p>{{ topic.content }}</p>
+            <p>{{ entry.content }}</p>
         </div>
         <br>
     {% endfor %}
