@@ -37,8 +37,16 @@ def entry_list_controller(request):
 
 # Контроллер, выводящий список тем
 def topic_list_controller(request):
+    # Получаем список тем
     topics = Topic.objects.order_by('-published')
     context = {'topics': topics}
+
+    # Получаем количество сообщений по каждой теме
+    entry_counts = {}
+    for tc in topics:
+        entry_count = Entry.objects.filter(topic=tc).count()
+        entry_counts[tc.pk] = entry_count
+    context['entry_counts'] = entry_counts
 
     return render(request, 'main/topic_list.html', context)
 

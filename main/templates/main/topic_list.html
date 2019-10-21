@@ -1,4 +1,5 @@
 {% extends 'layout/basic.html' %}
+{% load my_filters %}
 
 {# Блок выводит заголовок страницы #}
 {% block header %}
@@ -43,6 +44,7 @@
                 {{ topic.creator }} - {{ topic.published }}
             </p>
             <h3><a href="{% url 'entry_list' %}?topic_id={{ topic.pk }}"> {{ topic.title }}</a></h3>
+            Сообщений:{{ topic|counts_getter:entry_counts }}
         </div>
         <br>
     {% empty %}

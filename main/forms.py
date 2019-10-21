@@ -7,7 +7,7 @@ class TopicForm(forms.ModelForm):
         model = Topic
         fields = ['title']
         labels = {'title': 'Тема'}
-        widgets = {'title': forms.CharField(attrs={'cols': 60})}
+        # widgets = {'title': forms.CharField(attrs={'cols': 60})}
 
 
 class EntryForm(forms.ModelForm):
