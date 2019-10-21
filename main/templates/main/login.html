@@ -15,7 +15,7 @@
             {% csrf_token %}
             <table>
                 {{ form.as_table }}
-                <input type="hidden" name="next" value="{% url 'entry_list' %}"/>
+                <input type="hidden" name="next" value="{% url 'topic_list' %}"/>
                 <tr>
                     <td></td>
                     <td><input type="submit" value="Войти"/></td>
@@ -27,7 +27,7 @@
     <div class="block">
         <p align="center">
             <b>Вы уже выполнили вход.</b>
-            <a href={% url 'entry_list' %}>Вернуться на главную</a>
+            <a href={% url 'topic_list' %}>Вернуться на главную</a>
         </p>
     </div>
 {% endif %}

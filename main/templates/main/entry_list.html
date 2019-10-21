@@ -4,16 +4,20 @@
 {% block header %}
     <div class="block">
         <p>
-            <b>PyBlog - </b>
+            <b><a href="{% url 'topic_list' %}">PyBlog</a> - </b>
             {% if user.is_authenticated %}
                 {{ user }} - <a href={% url 'logout' %}>выйти</a>
             {% else %}
                 <a href={% url 'login' %}>войти</a> или <a href={% url 'register' %}>зарегистрироваться</a>
             {% endif %}
+        <p>{{ selected_topic.title }}</p>
         </p>
     </div>
     <br>
+    {# Выводим название темы #}
 {% endblock %}
+
+
 
 {# Блок выводит форму для публикации поста (при условии, что есть залогинившийся пользователь) #}
 {% block publisher %}

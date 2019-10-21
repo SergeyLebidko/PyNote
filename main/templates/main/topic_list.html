@@ -17,7 +17,6 @@
 {% endblock %}
 
 {# Блок выводит форму для публикации поста (при условии, что есть залогинившийся пользователь) #}
-{% comment %}
 {% block publisher %}
     {% if user.is_authenticated %}
         <div class="block">
@@ -34,7 +33,6 @@
         <br>
     {% endif %}
 {% endblock %}
-{% endcomment %}
 
 {# Блок выводит перечень сообщений #}
 {% block content %}
@@ -44,7 +42,7 @@
                 {{ topic.creator }} - {{ topic.published }}
             </p>
             <h3><a href="{% url 'entry_list' %}?topic_id={{ topic.pk }}"> {{ topic.title }}</a></h3>
-            Сообщений:{{ topic|counts_getter:entry_counts }}
+            Сообщений: {{ topic|counts_getter:entry_counts }}
         </div>
         <br>
     {% empty %}
