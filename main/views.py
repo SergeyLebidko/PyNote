@@ -76,7 +76,7 @@ def user_register_controller(request):
             new_user = form.save()
             authenticated_user = authenticate(username=new_user.username, password=request.POST['password1'])
             login(request, authenticated_user)
-            return HttpResponseRedirect(reverse('entry_list'))
+            return HttpResponseRedirect(reverse('topic_list'))
 
     if request.method == 'GET':
         form = UserCreationForm()
