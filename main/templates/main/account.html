@@ -1,0 +1,28 @@
+{% extends 'layout/basic.html' %}
+
+{% block header %}
+    <div class="block">
+        <a href={% url 'topic_list' %}>PyNote </a>
+        - {{ user }}
+    </div>
+    <br>
+{% endblock %}
+
+{% block publisher %}
+{% endblock %}
+
+{% block content %}
+    <div class="block">
+        {% if topics_count == 0 %}
+            Вы не создали ни одной темы<br>
+        {% else %}
+            Количество созданный тем: {{ topics_count }}<br>
+            <ul>
+            {% for topic in topics %}
+                <li><a href="{% url 'entry_list' %}?topic_id={{ topic.pk }}">{{ topic.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        Количество оставленных вами сообщений: {{ entry_counts }}
+    </div>
+{% endblock %}

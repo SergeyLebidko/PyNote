@@ -72,7 +72,17 @@ def topic_list_controller(request):
 def account_controller(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('topic_list'))
-    return HttpResponse('Здесь будут сведения об аккаунтах')
+
+    # Получаем список тем, созданных пользователем
+    topics = Topic.objects.filter(creator=request.user).order_by('-published')
+    topics_count = topics.count()
+    context = {'topics': topics, 'topics_count': topics_count}
+
+    # Получаем количество сообщений, оставленных пользователем
+    entry_counts = Entry.objects.filter(creator=request.user).count()
+    context['entry_counts']=entry_counts
+
+    return render(request, 'main/account.html', context)
 
 
 # Контроллер, регистрирующий нового пользователя

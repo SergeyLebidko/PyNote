@@ -5,7 +5,7 @@
 {% block header %}
     <div class="block">
         <p>
-            <b>PyBlog - </b>
+            <b>PyNote - </b>
             {% if user.is_authenticated %}
                 <a href={% url 'account' %}>{{ user }}</a> - <a href={% url 'logout' %}>выйти</a>
             {% else %}
