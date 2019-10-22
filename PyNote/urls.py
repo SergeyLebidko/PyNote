@@ -22,7 +22,10 @@ urlpatterns = [
     path('entry_list/', entry_list_controller, name='entry_list'),
     path('register/', user_register_controller, name='register'),
     path('account/', account_controller, name='account'),
+    path('change_password/', ChangePasswordController.as_view(), name='change_password'),
+    path('password_change_done/', PasswordChangeDoneController.as_view(), name='password_change_done'),
     path('login/', LoginController.as_view(), name='login'),
     path('logout/', LogoutController.as_view(), name='logout'),
     path('', topic_list_controller, name='topic_list'),
 ]
+

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
-from django.contrib.auth.views import LoginView, LogoutView
+from django.http import HttpResponseRedirect
+from django.urls import reverse, reverse_lazy
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from .models import Entry, Topic
@@ -80,7 +80,7 @@ def account_controller(request):
 
     # Получаем количество сообщений, оставленных пользователем
     entry_counts = Entry.objects.filter(creator=request.user).count()
-    context['entry_counts']=entry_counts
+    context['entry_counts'] = entry_counts
 
     return render(request, 'main/account.html', context)
 
@@ -107,6 +107,17 @@ class LoginController(LoginView):
     template_name = 'main/login.html'
 
 
+# Контроллер смены пароля
+class ChangePasswordController(PasswordChangeView):
+    template_name = 'main/change_password.html'
+    success_url = reverse_lazy('password_change_done')
+
+
+# Контроллер, выводящий страницу с уведомлением об успешной смене пароля
+class PasswordChangeDoneController(PasswordChangeDoneView):
+    template_name = 'main/password_change_done.html'
+
+
 # Контроллер выхода
 class LogoutController(LogoutView):
-    next_page = 'topic_list'
+    next_page = reverse_lazy('topic_list')

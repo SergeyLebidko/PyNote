@@ -3,7 +3,7 @@
 {% block header %}
     <div class="block">
         <a href={% url 'topic_list' %}>PyNote </a>
-        - {{ user }}
+        - {{ user }} - <a href={% url 'change_password' %}>сменить пароль</a>
     </div>
     <br>
 {% endblock %}
