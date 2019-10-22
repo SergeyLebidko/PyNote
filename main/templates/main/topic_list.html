@@ -7,7 +7,7 @@
         <p>
             <b>PyBlog - </b>
             {% if user.is_authenticated %}
-                {{ user }} - <a href={% url 'logout' %}>выйти</a>
+                <a href={% url 'account' %}>{{ user }}</a> - <a href={% url 'logout' %}>выйти</a>
             {% else %}
                 <a href="{% url 'login' %}">войти</a> или <a href={% url 'register' %}>зарегистрироваться</a>
             {% endif %}

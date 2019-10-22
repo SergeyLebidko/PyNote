@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
@@ -66,6 +66,13 @@ def topic_list_controller(request):
         context['form'] = form
 
     return render(request, 'main/topic_list.html', context)
+
+
+# Контроллер, выводящий информацию о пользователе
+def account_controller(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('topic_list'))
+    return HttpResponse('Здесь будут сведения об аккаунтах')
 
 
 # Контроллер, регистрирующий нового пользователя
