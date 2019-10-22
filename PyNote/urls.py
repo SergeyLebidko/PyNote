@@ -27,5 +27,6 @@ urlpatterns = [
     path('login/', LoginController.as_view(), name='login'),
     path('logout/', LogoutController.as_view(), name='logout'),
     path('', topic_list_controller, name='topic_list'),
+    path('remove_topic/', remove_topic_controller, name='remove_topic')
 ]
 

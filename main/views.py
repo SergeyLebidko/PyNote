@@ -68,6 +68,22 @@ def topic_list_controller(request):
     return render(request, 'main/topic_list.html', context)
 
 
+# Контроллер, удаляющий тему
+def remove_topic_controller(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('topic_list'))
+
+    # Получаем тему, которую надо удалить. Если это не удалось, то переходим к странице аккаунта
+    try:
+        selected_topic = Topic.objects.get(pk=request.GET['topic_id'])
+    except:
+        return HttpResponseRedirect(reverse('account'))
+
+    # Удаляем тему и переходим к странице аккаунта
+    selected_topic.delete()
+    return HttpResponseRedirect(reverse('account'))
+
+
 # Контроллер, выводящий информацию о пользователе
 def account_controller(request):
     if not request.user.is_authenticated:
